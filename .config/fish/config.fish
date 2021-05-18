@@ -18,13 +18,18 @@ alias htopl="htop | lolcat"
 alias cmatrixl="cmatrix | lolcat"
 alias cat="lolcat"
 
-# ptsh
-alias lsa="ptls -a"
-alias touch="pttouch"
-alias mkdir="ptmkdir"
+# Config Shortcuts
+alias scriptc="cd ~/Developer/.scripts/ ; ls"
+alias fishc="vim ~/.config/fish/config.fish"
+alias i3c="vim ~/.config/i3/config"
+alias polyc="vim ~/.config/polybar/config"
+
+# Better Shell
+alias lsd="lsd -al"
 
 # Network
 alias snf="sudo python3 ~/Developer/PizzaGate/packetsniffer.py"
+alias pg="ping -c 4 8.8.8.8"
 
 # Games
 alias gol="python3 ~/Developer/PYTHON/GameOfLife2/GameOfLife.py"

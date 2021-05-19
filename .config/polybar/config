@@ -25,7 +25,6 @@ background = #aa001322
 background-alt = #aa130023
 foreground = #afbfcf
 foreground-alt = #646464
-#primary = #128981
 primary = #0a81f5
 secondary = #ff00ff
 alert = #ff0000
@@ -59,11 +58,11 @@ module-margin-right = 2
 
 font-0 = monospace:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-2 = FontAwesome:pixelsize=10;1
 
-modules-left = i3
-modules-center = uptime
-modules-right = filesystem memory cpu date
+modules-left = i3 uptime
+modules-center = cpu memory
+modules-right = filesystem dates
 
 tray-position = right
 tray-padding = 2
@@ -98,7 +97,7 @@ module-margin-right = 2
 
 font-0 = monospace:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-2 = FontAwesome:pixelsize=10;1
 
 modules-left = apps gping rping fping
 modules-center = loaf
@@ -159,6 +158,7 @@ label-urgent-padding = 2
 [module/loaf]
 type = custom/script
 exec = python3 ~/Developer/.scripts/loaf.py
+label = ¯\_(ツ)_/¯ %output% ¯\_(ツ)_/¯
 interval = 360
 
 ;	#################
@@ -168,6 +168,7 @@ interval = 360
 [module/dates]
 type = custom/script
 exec = python3 ~/Developer/.scripts/polyscripts/polydate.py
+label = %{F#0a81f5}%{F#afbfcf} %output%
 interval = 1
 
 ;	##################
@@ -177,6 +178,7 @@ interval = 1
 [module/uptime]
 type = custom/script
 exec = python3 ~/Developer/.scripts/polyscripts/polyuptime.py
+label = %{F#0a81f5} %{F#afbfcf}%output%
 interval = 1
 
 ;	##################
@@ -204,6 +206,7 @@ interval = 60
 [module/gping]
 type = custom/script
 exec = sh ~/Developer/.scripts/polyscripts/gping.sh
+label = %{F#0a81f5}%{F#afbfcf} %output%
 interval = 1
 
 ;	#################
@@ -213,6 +216,7 @@ interval = 1
 [module/rping]
 type = custom/script
 exec = sh ~/Developer/.scripts/polyscripts/rping.sh
+label = %{F#0a81f5}%{F#afbfcf} %output%
 interval = 1
 
 
@@ -223,6 +227,7 @@ interval = 1
 [module/fping]
 type = custom/script
 exec = sh ~/Developer/.scripts/polyscripts/fping.sh
+label = %{F#0a81f5}%{F#afbfcf} %output%
 interval = 1
 
 ;	######################
@@ -237,8 +242,8 @@ mount-0 = /
 mount-1 = /mnt
 mount-2 = /mnt/mnt
 
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
-label-unmounted = %mountpoint%
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %free%
+label-unmounted = %mountpoint%
 label-unmounted-foreground = ${colors.foreground-alt}
 
 ;	###############
@@ -284,46 +289,33 @@ ramp-coreload-7-foreground = #d2142e
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix-foreground = ${colors.foreground}
 label = %{F#0a81f5}MEM: %{F#afbfcf}[ %mb_used% / %mb_total% ]
+format = "<label> <ramp-used>"
 
-;	################
-;	##### WLAN #####
-;	################
-
-[module/wlan]
-type = internal/network
-interface = eth0
-interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-format-disconnected = DOWN
-
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
-
-label = %essid%
-
-;	################
-;	##### DATE #####
-;	################
-
-[module/date]
-type = internal/date
-interval = 1
-
-prefix = "lel"
-date =%d.%m.%Y
-time = %H:%M:%S
-
-label =  %date% %time%
+ramp-used-0 = ▁
+ramp-used-0-font = 2
+ramp-used-0-foreground = #003ac5
+ramp-used-1 = ▂
+ramp-used-1-font = 2
+ramp-used-1-foreground = #1e34af
+ramp-used-2 = ▃
+ramp-used-2-font = 2
+ramp-used-2-foreground = #3c2f99
+ramp-used-3 = ▄
+ramp-used-3-font = 2
+ramp-used-3-foreground = #5a2984
+ramp-used-4 = ▅
+ramp-used-4-font = 2
+ramp-used-4-foreground = #78246e
+ramp-used-5 = ▆
+ramp-used-5-font = 2
+ramp-used-5-foreground = #951e59
+ramp-used-6 = ▇
+ramp-used-6-font = 2
+ramp-used-6-foreground = #b41943
+ramp-used-7 = █
+ramp-used-7-font = 2
+ramp-used-7-foreground = #d2142e
 
 ;	#####################
 ;	##### POWERMENU #####
@@ -332,13 +324,13 @@ label =  %date% %time%
 [module/powermenu]
 type = custom/menu
 
-expand-right = true
+expand-right = false
 
 format-spacing = 1
 
-label-open = 
+label-open = Power %{F#ff0000}
 label-open-foreground = ${colors.foreground}
-label-close =  cancel
+label-close = 
 label-close-foreground = ${colors.alert}
 label-close-underline = ${colors.alert}
 label-separator = |
@@ -346,22 +338,22 @@ label-separator-foreground = ${colors.foreground-alt}
 
 label-open-underline = #ff0000
 
-menu-0-0 = reboot
+menu-0-0 =  reboot
 menu-0-0-foreground = #00ff00
 menu-0-0-underline = #00ff00
 menu-0-0-exec = xfce4-terminal -e "sudo reboot"
 
-menu-0-1 = poweroff
+menu-0-1 =  poweroff
 menu-0-1-foreground = #00ff00
 menu-0-1-underline = #00ff00
 menu-0-1-exec = xfce4-terminal -e "sudo poweroff"
 
-menu-0-2 = logout
+menu-0-2 =  logout
 menu-0-2-foreground = #00ff00
 menu-0-2-underline = #00ff00
 menu-0-2-exec = i3 exit
 
-menu-0-3 = lock
+menu-0-3 =  lock
 menu-0-3-foreground = #00ff00
 menu-0-3-underline = #00ff00
 menu-0-3-exec = i3lock -i ~/Wallpapers/ArchPlasmaPure.png
@@ -375,10 +367,10 @@ type = custom/menu
 expand-right = true
 format-spacing = 1
 
-label-open = Applications
+label-open = %{F#0a81f5}%{F#afbfcf} Artix
 label-open-foreground = ${colors.foreground}
 
-label-close =  cancel
+label-close =  
 label-close-foreground = ${colors.alert}
 label-close-underline = ${colors.alert}
 
@@ -387,17 +379,17 @@ label-separator-foreground = ${colors.foreground-alt}
 
 label-open-underline = ${colors.primary}
 
-menu-0-0 = APP
+menu-0-0 =  Apps
 menu-0-0-foreground = #00ff00
 menu-0-0-underline = #00ff00
 menu-0-0-exec = rofi -modi drun -show drun -lines 31 -show-icons -eh 1 -location 1 -width 600 -font "monospace 12" -theme "~/.config/rofi/deepblue_opaque.rafi"
 
-menu-0-1 = SSH
+menu-0-1 =  SSH
 menu-0-1-foreground = #00ff00
 menu-0-1-underline = #00ff00
 menu-0-1-exec = rofi -mode ssh -show ssh -lines = 1 -eh 2 -location 1 -width 1920 -font "monospace 12" -theme "~/.config/rofi/deepblue_opaque.rafi"
 
-menu-0-2 = EXEC
+menu-0-2 =  CMD
 menu-0-2-foreground = #00ff00
 menu-0-2-underline = #00ff00
 menu-0-2-exec = rofi -mode run -show run -lines = 1 -eh 2 -location 1 -width 1920 -font "monospace 12" -theme "~/.config/rofi/deepblue_opaque.rafi"
@@ -408,6 +400,10 @@ menu-2-1 = PCManFM
 menu-2-1-exec = pcmanfm
 menu-2-2 = Ranger
 menu-2-2-exec = xfce4-terminal -e ranger
+
+;	####################
+;	##### SETTINGS #####
+;	####################
 
 [settings]
 screenchange-reload = true

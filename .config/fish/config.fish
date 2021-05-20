@@ -1,3 +1,12 @@
+# |-------------------------------------------------------------------------|
+# |  ____                 _     _      ____                        _        |
+# | |  _ \ ___ _   _  ___| |__ (_) ___|  _ \ ___ _ __   __ _ _   _(_)_ __   |
+# | | |_) / __| | | |/ __| '_ \| |/ __| |_) / _ \ '_ \ / _` | | | | | '_ \  |
+# | |  __/\__ \ |_| | (__| | | | | (__|  __/  __/ | | | (_| | |_| | | | | | |
+# | |_|   |___/\__, |\___|_| |_|_|\___|_|   \___|_| |_|\__, |\__,_|_|_| |_| |
+# |           |___/                                   |___/                 |
+# |-------------------------------------------------------------------------| 
+
 # Startup Script
 xmodmap -e 'keycode 66 = Escape'
 xmodmap -e 'clear lock'
@@ -9,7 +18,7 @@ echo "Setting Aliases ..."
 alias please="sudo"
 alias nvpn="sudo python3 ~/Developer/.scripts/vpn.py"
 alias loaf="python3 ~/Developer/.scripts/loaf.py"
-alias cls="cd && clear && bash"
+alias cls="cd ; clear ; python3 ~/Developer/.scripts/rfetch.py && python3 ~/Developer/.scripts/loaf.py"
 alias bonsai="python3 ~/Developer/.scripts/bonsai.py"
 
 # Lolcat
@@ -26,6 +35,12 @@ alias polyc="vim ~/.config/polybar/config"
 
 # Better Shell
 alias lsd="lsd -al"
+alias cp="cp -v"
+alias mv="mv -v"
+
+# Even Quicker
+alias v="vim"
+alias p="sudo pacman"
 
 # Network
 alias snf="sudo python3 ~/Developer/PizzaGate/packetsniffer.py"

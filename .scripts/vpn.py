@@ -1,3 +1,13 @@
+#! /usr/bin/env python3
+# |-------------------------------------------------------------------------|
+# |  ____                 _     _      ____                        _        |
+# | |  _ \ ___ _   _  ___| |__ (_) ___|  _ \ ___ _ __   __ _ _   _(_)_ __   |
+# | | |_) / __| | | |/ __| '_ \| |/ __| |_) / _ \ '_ \ / _` | | | | | '_ \  |
+# | |  __/\__ \ |_| | (__| | | | | (__|  __/  __/ | | | (_| | |_| | | | | | |
+# | |_|   |___/\__, |\___|_| |_|_|\___|_|   \___|_| |_|\__, |\__,_|_|_| |_| |
+# |           |___/                                   |___/                 |
+# |-------------------------------------------------------------------------|
+
 import os
 import random
 
@@ -9,15 +19,15 @@ class VPN_CONNECT:
 
 def create_hostfile():
     print("Looking for hostlist ...")
-    if not os.path.isfile('/home/psychicpeanut/Developer/.scripts/assets/hostlist.txt'):
+    if not os.path.isfile('/home/psychoticpendulum/Developer/.scripts/assets/hostlist.txt'):
         print("No hostlist found. Creating new one ...")
-        os.system("ls /etc/openvpn/ovpn_tcp >> /home/psychichpeanut/Developer/.scripts/assets/hostlist.txt")
+        os.system("ls /etc/openvpn/ovpn_tcp >> /home/psychoticpendulum/Developer/.scripts/assets/hostlist.txt")
 
 def getLocation():
     VPN_CONNECT.location = str(input("Enter Country Code:\t"))
 
 def read_hostlist():
-    hostlist = open("/home/psychicpeanut/Developer/.scripts/assets/hostlist.txt", "r+")
+    hostlist = open("/home/psychoticpendulum/Developer/.scripts/assets/hostlist.txt", "r+")
     for line in hostlist.readlines():
         line = line.rstrip("\n")
         if VPN_CONNECT.location in line:
@@ -55,9 +65,13 @@ def establish_connection():
             print("Exiting ...")
 
 def main():
-    create_hostfile()
-    getLocation()
-    read_hostlist()
-    establish_connection()
+    ui = str(input("Do you want to connect to a VPN? [Y/n]\t"))
+    if ui == "Y" or ui == "y":
+        create_hostfile()
+        getLocation()
+        read_hostlist()
+        establish_connection()
+    else:
+        print("Exiting ...")
 
 main()

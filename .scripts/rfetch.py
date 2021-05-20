@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env python3
 # |-------------------------------------------------------------------------|
 # |  ____                 _     _      ____                        _        |
 # | |  _ \ ___ _   _  ___| |__ (_) ___|  _ \ ___ _ __   __ _ _   _(_)_ __   |
@@ -6,13 +6,13 @@
 # | |  __/\__ \ |_| | (__| | | | | (__|  __/  __/ | | | (_| | |_| | | | | | |
 # | |_|   |___/\__, |\___|_| |_|_|\___|_|   \___|_| |_|\__, |\__,_|_|_| |_| |
 # |           |___/                                   |___/                 |
-# |-------------------------------------------------------------------------| 
+# |-------------------------------------------------------------------------|
 
-echo "Setting keyboard to DE ..."
-setxkbmap de
-echo "Setting CAPSLOCK to ESCAPE ..."
-xmodmap -e 'keycode 66 = Escape'
-echo "disabling CAPSLOCK ..."
-xmodmap -e 'clear lock'
-echo "Settings keyrate to 300, 50 ..."
-xset r rate 300 50
+import os
+import random
+
+logos = ["Arch", "Artix"]
+logo_length = len(logos) - 1
+command = "neofetch --ascii_distro "
+command += logos[random.randint(0, logo_length)]
+os.system(command)

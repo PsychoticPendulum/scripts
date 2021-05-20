@@ -8,11 +8,13 @@
 # |           |___/                                   |___/                 |
 # |-------------------------------------------------------------------------| 
 
-echo "Setting keyboard to DE ..."
-setxkbmap de
-echo "Setting CAPSLOCK to ESCAPE ..."
-xmodmap -e 'keycode 66 = Escape'
-echo "disabling CAPSLOCK ..."
-xmodmap -e 'clear lock'
-echo "Settings keyrate to 300, 50 ..."
-xset r rate 300 50
+echo "Setting Wallpaper ..."
+feh --bg-scale ~/Wallpapers/ArchPlasmaPure.png
+echo "Setting keymap ..."
+sudo sh ~/Developer/.scripts/keymap.sh
+echo "Mounting secondary drive ..."
+sudo mount /dev/sdb1 /mnt
+echo "Starting Update Script ..."
+sudo python3 ~/Developer/.scripts/update.py
+echo "Connecting to VPN ..."
+sudo python3 ~/Developer/.scripts/vpn.py

@@ -9,7 +9,7 @@
 # |-------------------------------------------------------------------------| 
 
 echo "Setting keyboard to DE ..."
-setxkbmap de
+setxkbmap en_US
 echo "Setting CAPSLOCK to ESCAPE ..."
 xmodmap -e 'keycode 66 = Escape'
 echo "disabling CAPSLOCK ..."

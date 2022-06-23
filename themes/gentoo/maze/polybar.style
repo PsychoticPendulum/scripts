@@ -1,0 +1,5 @@
+; vim:set ft=dosini:
+
+[style]
+bottom = true
+padding = 2

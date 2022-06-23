@@ -1,0 +1,6 @@
+#! /bin/bash
+
+font pango:Source Code Pro 8
+gaps inner 7
+gaps outer 13
+for_window [class=".*"] border pixel 3

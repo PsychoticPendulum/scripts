@@ -1,5 +1,5 @@
 # Rice
-set $text-color			#f3f4f5
+set $text-color			#ffffff
 set $bg-color-active		#810af5
 set $bg-color-inactive		#130023
 set $inactive-text-color	#ffffff

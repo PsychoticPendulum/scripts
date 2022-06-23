@@ -1,10 +1,10 @@
 # Rice
-set $text-color			#f3f4f5
-set $bg-color-active		#810af5
+set $text-color			#ffffff
+set $bg-color-active		#0a81f5
 set $bg-color-inactive		#130023
 set $inactive-text-color	#ffffff
 set $urgent-bg-color		#3f0908
-set $indicator-color		#810af5
+set $indicator-color		#0a81f5
 
 # Set window colors
 #				border			background		text			indicator

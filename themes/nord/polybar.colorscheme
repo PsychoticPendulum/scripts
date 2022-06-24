@@ -4,5 +4,5 @@
 background	= #aa001323
 foreground	= #ffffffff
 primary		= #ff0a81f5                                   
-secondary	= #ff4f006f                                 
+secondary	= #ff004f6f
 alert		= #ffff0000

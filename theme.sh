@@ -1,12 +1,11 @@
 #! /bin/bash
 
-exit
-
 set_theme () {
-	cp ~/Developer/.scripts/themes/$1/i3.config ~/.config/i3/config
-	cp ~/Developer/.scripts/themes/$1/polybar.config ~/.config/polybar/config
-	cp ~/Developer/.scripts/themes/$1/xfce4_terminal.config ~/.config/xfce4/terminal/terminalrc
-	cp ~/Developer/.scripts/themes/$1/kitty.config ~/.config/kitty/kitty.conf
+	cp ~/Developer/.scripts/themes/$1/i3.colorscheme ~/.config/i3/colorscheme
+	cp ~/Developer/.scripts/themes/$1/i3.style ~/.config/i3/style
+	cp ~/Developer/.scripts/themes/$1/polybar.colorscheme ~/.config/polybar/colorscheme
+	cp ~/Developer/.scripts/themes/$1/polybar.style ~/.config/polybar/style
+	cp ~/Developer/.scripts/themes/$1/kitty.conf ~/.config/kitty/kitty.conf
 	cp ~/Developer/.scripts/themes/$1/wallpaper.jpg ~/Wallpapers/wallpaper.jpg
 	feh --bg-fill ~/Wallpapers/wallpaper.jpg
 	echo $1 > ~/Developer/.scripts/themes/.last.log

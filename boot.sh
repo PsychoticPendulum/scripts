@@ -27,7 +27,7 @@ sh ~/Developer/.scripts/theme.sh $LAST
 feh --bg-scale ~/Wallpapers/wallpaper.jpg
 
 wrapper "Setting keymap ..."
-sudo sh ~/Developer/.scripts/keymap.sh
+sudo sh ~/Developer/.scripts/keymod.sh
 
 wrapper "Mounting MicroSD ..."
 sudo veracrypt /dev/mmcblk0p1 && sudo sh ~/Developer/.scripts/sdbackup.sh 

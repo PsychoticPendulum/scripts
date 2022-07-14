@@ -8,8 +8,6 @@
 # |           |___/                                   |___/                 |
 # |-------------------------------------------------------------------------| 
 
-echo "Setting keyboard to EN..."
-setxkbmap en_US
 echo "Setting CAPSLOCK to ESCAPE ..."
 xmodmap -e 'keycode 66 = Escape'
 echo "disabling CAPSLOCK ..."

@@ -19,7 +19,7 @@ sh ~/.screenlayout/homesetup.sh
 
 wrapper "Launching Polybar ..."
 killall polybar
-sh ~/.config/polybar/launch.sh
+sh ~/.config/polybar/launch.sh &
 
 wrapper "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)

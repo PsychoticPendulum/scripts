@@ -11,7 +11,7 @@ class JOKE:
     votes   = ''
     content = []
 
-page_url = 'http://ibash.de/random.html'
+page_url = 'http://ibash.de/top_1.html'
 
 def GetVoteColor(votes):
     if int(votes) > 0:
@@ -21,7 +21,6 @@ def GetVoteColor(votes):
 def FormatMessage(msg):
     author  = msg.split('&gt; ')[0]
     text    = msg.split('&gt; ')[1]
-    buffer  = ' ' * (7 - len(author))
     print(f'{UTIL.RESET}{UTIL.BOLD}<{author}>\n{UTIL.RESET}{text}')
 
 def PresentJoke(joke):
@@ -68,7 +67,10 @@ def ibash():
     html = html[1].split('class=quotetable')
 
     # Select random quote
-    ParseQuote(html[randint(1,20)])
+    ParseQuote(html[randint(1,17)])
 
 if __name__ == '__main__':
-    ibash()
+    try:
+        ibash()
+    except:
+        Log(LVL.ERROR, 'Something went wrong ...')

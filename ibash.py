@@ -5,42 +5,70 @@ import requests
 from random import randint
 from PyTerm import *
 
-page_url = 'http://www.ibash.de/random.html'
+class JOKE:
+    pos     = ''
+    date    = ''
+    votes   = ''
+    content = []
 
-def FormatLine(author, line):
-    author = f'{UTIL.BOLD}{author}:'
-    line = f'{UTIL.RESET}{line}'
-    print(f'{author}\t{line}')
+page_url = 'http://ibash.de/random.html'
 
-def PresentContent(content):
-    for sentence in content:
-        sentence = sentence.split('&gt;')
-        FormatLine(sentence[0],sentence[1])
+def GetVoteColor(votes):
+    if int(votes) > 0:
+        return f'{FG.GREEN}'
+    return f'{FG.RED}'
 
-def WorkContent(content):
-    content = content.split('<code>')
-    del content[0]
-    joke = []
-    for i in range(len(content)):
-        if '&gt' in content[i]:
-            joke.append(content[i])
+def FormatMessage(msg):
+    author  = msg.split('&gt; ')[0]
+    text    = msg.split('&gt; ')[1]
+    buffer  = ' ' * (7 - len(author))
+    print(f'{UTIL.RESET}{UTIL.BOLD}<{author}>\n{UTIL.RESET}{text}')
 
-    result = []
-    for line in joke:
-        result.append(line.split('</code>')[0])
+def PresentJoke(joke):
+    # Present Metadata
+    print(f'{UTIL.RESET}{UTIL.BOLD}{joke.pos}',end='\t')
+    print(f'{UTIL.RESET}{joke.date}',end='\t')
+    print(f'{UTIL.RESET}{GetVoteColor(joke.votes)}{joke.votes}',end='\t')
+    print(f'{UTIL.RESET}')
 
-    PresentContent(result)
+    # Present Message
+    for msg in joke.content:
+        FormatMessage(msg)
 
-def GetContent():
-    # Get HTML of page
-    Log(LVL.INFO, 'Sending HTML request ...')
-    content = requests.get(page_url).text
+def ParseQuote(html):
+    # Initialize joke instance
+    joke = JOKE()
 
-    # Only care about body
-    Log(LVL.INFO, 'Removing head from body ...')
-    content = content.split('<body>')
-    content = content[1].split('class=quotetable')
-    WorkContent(content[randint(1,20)]) 
+    # Get joke metadata
+    joke.pos    = html.split('zeige Zitat ')[1].split('"')[0]
+    joke.date   = html.split('&nbsp;&nbsp;')[4].split('</td>')[0]
+    joke.votes  = html.split('onclick=\'vote')[1].split(';')[0].split(',')[2][:-1]
+
+    # Filter conversation    
+    convo = html.split('code')
+    for msg in convo:
+        if '&gt;' in msg: joke.content.append(msg[1:][:-2])
+
+    PresentJoke(joke)
+
+def ibash():
+    # Get raw html of page
+    html = requests.get(page_url).text
+    
+    # Fix encoding
+    html = html.replace('&szlig;','ß')
+    html = html.replace('&auml;','ä')
+    html = html.replace('&ouml;','ö')
+    html = html.replace('&uuml;','ü')
+    html = html.replace('&quot;','"')
+    html = html.replace('&lt;','<')
+    
+    # Remove head from body
+    html = html.split('body')
+    html = html[1].split('class=quotetable')
+
+    # Select random quote
+    ParseQuote(html[randint(1,20)])
 
 if __name__ == '__main__':
-    GetContent()
+    ibash()

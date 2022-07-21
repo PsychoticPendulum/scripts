@@ -11,7 +11,7 @@ class JOKE:
     votes   = ''
     content = []
 
-page_url = 'http://ibash.de/top_1.html'
+page_url = f'http://ibash.de/top_{randint(1,100)}.html'
 
 def GetVoteColor(votes):
     if int(votes) > 0:

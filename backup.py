@@ -9,7 +9,7 @@ def GetUser():
 PATH = f"/home/{GetUser()}"
 DEST = [
         "/mnt/media/backups/FullBackup/",
-        "/mnt/NAS/backups/FullBackup"
+        "/mnt/NAS/backups/FullBackup/"
 ]
 
 FILES = [
@@ -46,6 +46,9 @@ def Backup(DEST):
     if not os.path.exists(DEST):
         Log(LVL.ERROR, f"Path does not exist:\t{UTIL.UNDERLINE}{DEST}")
         return
+
+    # Capturing date
+    os.system(f'date >> {DEST}backup.log')
 
     # Basic Files
     for FILE in FILES:

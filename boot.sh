@@ -10,7 +10,6 @@
 
 wrapper () {
 	sep -b 4 -l 1
-	log INFO "$1"
 }
 
 clear
@@ -27,7 +26,7 @@ feh --bg-scale ~/Wallpapers/wallpaper.jpg
 wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
 
-wrapper "Mounting MicroSD ..."
+# wrapper "Mounting MicroSD ..."
 # sudo veracrypt /dev/mmcblk0p1 && sudo sh ~/Developer/.scripts/sdbackup.sh 
 # sudo mount /dev/mmcblk0p1 /mnt/SD
 

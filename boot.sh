@@ -15,8 +15,6 @@ wrapper () {
 
 clear
 
-sh ~/.screenlayout/homesetup.sh
-
 wrapper "Launching Polybar ..."
 killall polybar
 sh ~/.config/polybar/launch.sh &
@@ -30,11 +28,11 @@ wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
 
 wrapper "Mounting MicroSD ..."
-sudo veracrypt /dev/mmcblk0p1 && sudo sh ~/Developer/.scripts/sdbackup.sh 
+# sudo veracrypt /dev/mmcblk0p1 && sudo sh ~/Developer/.scripts/sdbackup.sh 
 # sudo mount /dev/mmcblk0p1 /mnt/SD
 
 wrapper "Starting Update Script ..."
-sudo sh ~/Developer/.scripts/update.sh kek
+sudo sh ~/Developer/.scripts/update.sh kek ; repull.sh
 
 wrapper "Connecting to VPN ..."
 sudo python3 ~/Developer/.scripts/vpn.py

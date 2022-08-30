@@ -26,6 +26,7 @@ DIRS = [
     ".school",
     ".log",
     ".info",
+    ".newsboat",
 ]
 
 CFGS = [

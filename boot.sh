@@ -14,6 +14,8 @@ wrapper () {
 
 clear
 
+~/.screenlayout/focus.sh
+
 wrapper "Launching Polybar ..."
 killall polybar
 sh ~/.config/polybar/launch.sh &

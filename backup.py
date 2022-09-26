@@ -24,7 +24,6 @@ DIRS = [
     ".vim",
     ".stasi",
     ".screenlayout",
-    ".school",
     ".log",
     ".info",
     ".newsboat",

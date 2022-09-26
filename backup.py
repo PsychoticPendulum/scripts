@@ -20,6 +20,7 @@ FILES = [
 DIRS = [
     "Developer",
     "Wallpapers",
+    "Files",
     ".vim",
     ".stasi",
     ".screenlayout",

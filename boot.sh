@@ -19,6 +19,7 @@ clear
 wrapper "Launching Polybar ..."
 killall polybar
 sh ~/.config/polybar/launch.sh &
+i3 restart
 
 wrapper "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)

@@ -1,5 +1,5 @@
 #! /bin/bash
 
-OUTPUT=$(tail -n 4 /home/$USER/.local/share/fish/fish_history | head -n 1)
-OUTPUT=${OUTPUT:7}
-sudo $OUTPUT
+CMD=$(tac /home/$USER/.local/share/fish/fish_history | grep cmd | head -n 2 | tail -n 1)
+NCMD=${CMD:7}
+sudo $NCMD

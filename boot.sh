@@ -29,9 +29,7 @@ feh --bg-scale ~/Wallpapers/wallpaper.jpg
 wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
 
-# wrapper "Mounting MicroSD ..."
-# sudo veracrypt /dev/mmcblk0p1 && sudo sh ~/Developer/.scripts/sdbackup.sh 
-# sudo mount /dev/mmcblk0p1 /mnt/SD
+sudo veracrypt /dev/nvme0n1p5 --keyfiles="/home/$USER/.keys/nvme0n1p5" ~/Files/School/
 
 wrapper "Starting Update Script ..."
 sudo sh ~/Developer/.scripts/update.sh kek ; repull.sh

@@ -29,6 +29,7 @@ feh --bg-scale ~/Wallpapers/wallpaper.jpg
 wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
 
+wrapper "Mounting shared partitions"
 sudo veracrypt /dev/nvme0n1p5 --keyfiles="/home/$USER/.keys/nvme0n1p5" ~/Files/School/
 
 wrapper "Starting Update Script ..."

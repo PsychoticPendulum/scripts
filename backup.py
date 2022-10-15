@@ -67,6 +67,25 @@ def Backup(DEST):
         os.system(f"rsync -rv {PATH}/.config/{CFG} {DEST}/.config/")
 
 
+def GetTime():
+    return int(os.popen("date +%s").read().rstrip("\n"))
+
+def GetDuration(start,end):
+    seconds = end - start
+    minutes = 0
+    hours = 0
+    while seconds > 59:
+        minutes += 1
+        seconds -= 60
+    while minutes > 59:
+        hours += 1
+        minutes -= 60
+    return f"{hours}h {minutes}m {seconds}s"
+
 if __name__ == "__main__":
+    start = GetTime()
     for dest in DEST:
         Backup(dest)
+    end = GetTime()
+    duration = GetDuration(start,end)
+    Log(LVL.INFO, f"Total Time: {duration}")

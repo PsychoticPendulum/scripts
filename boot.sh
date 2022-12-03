@@ -30,7 +30,12 @@ wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
 
 wrapper "Mounting shared partitions"
-ls /dev/nvme0n1p5 && sudo veracrypt /dev/nvme0n1p5 --keyfiles="/home/$USER/.keys/nvme0n1p5" ~/Files/School/
+hostname=$(cat /etc/hostname)
+if [[ $hostname == "tux" ]]; then
+	sudo veracrypt /dev/nvme0n1p5 --keyfiles="/home/$USER/.keys/nvme0n1p5" ~/Files/School/
+elif [[ $hostname -eq "psychosis" ]]; then
+	sudo veracrypt /dev/sda --keyfiles="/home/$USER/.keys/sda" ~/Files/Downloads/
+fi
 
 wrapper "Starting Update Script ..."
 sudo sh ~/Developer/.scripts/update.sh kek ; repull.sh

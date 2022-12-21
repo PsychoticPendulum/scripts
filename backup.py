@@ -27,7 +27,8 @@ DIRS = [
     ".log",
     ".info",
     ".newsboat",
-    ".keys"
+    ".keys",
+    ".minecraft"
 ]
 
 CFGS = [

@@ -16,15 +16,13 @@ clear
 
 ~/.screenlayout/focus.sh
 
-wrapper "Launching Polybar ..."
-killall polybar
-sh ~/.config/polybar/launch.sh &
-i3 restart
-
 wrapper "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)
 sh ~/Developer/.scripts/theme.sh $LAST
 feh --bg-scale ~/Wallpapers/wallpaper.jpg
+
+wrapper "Launching Polybar ..."
+sh ~/.config/polybar/launch.sh &
 
 wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
@@ -36,6 +34,9 @@ if [[ $hostname == "tux" ]]; then
 elif [[ $hostname -eq "psychosis" ]]; then
 	sudo veracrypt /dev/sda --keyfiles="/home/$USER/.keys/sda" ~/Files/Downloads/
 fi
+
+wrapper "Creating tmux session"
+tmux new-session -d -s music
 
 wrapper "Starting Update Script ..."
 sudo sh ~/Developer/.scripts/update.sh kek ; repull.sh

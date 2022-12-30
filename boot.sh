@@ -9,19 +9,19 @@
 # |-------------------------------------------------------------------------| 
 
 wrapper () {
-	printf "\x1B[32;7m$1\x1B[0m"
+	printf "\x1B[32;7m$1\x1B[0m\n"
 }
 
 clear
-
-wrapper "Cleaning up ..."
-rm -Rfv ~/Downloads ~/Desktop
-~/.screenlayout/focus.sh
 
 wrapper "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)
 sh ~/Developer/.scripts/theme.sh $LAST
 feh --bg-scale ~/Wallpapers/wallpaper.jpg
+
+wrapper "Cleaning up ..."
+rm -Rfv ~/Downloads ~/Desktop
+~/.screenlayout/focus.sh
 
 wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
@@ -38,9 +38,13 @@ wrapper "Creating tmux session"
 tmux new-session -d -s music
 
 wrapper "Starting Update Script ..."
-sudo sh ~/Developer/.scripts/update.sh kek ; repull.sh
+sudo sh ~/Developer/.scripts/update.sh kek
+
+wrapper "Updating repositories ..."
+repull.sh
 
 wrapper "Connecting to VPN ..."
-sudo python3 ~/Developer/.scripts/vpn.py
+python3 ~/Developer/.scripts/vpn.py
+
 clear
 bash

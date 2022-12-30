@@ -9,20 +9,19 @@
 # |-------------------------------------------------------------------------| 
 
 wrapper () {
-	sep -b 4 -l 1
+	printf "\x1B[32;7m$1\x1B[0m"
 }
 
 clear
 
+wrapper "Cleaning up ..."
+rm -Rfv ~/Downloads ~/Desktop
 ~/.screenlayout/focus.sh
 
 wrapper "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)
 sh ~/Developer/.scripts/theme.sh $LAST
 feh --bg-scale ~/Wallpapers/wallpaper.jpg
-
-wrapper "Launching Polybar ..."
-sh ~/.config/polybar/launch.sh &
 
 wrapper "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh

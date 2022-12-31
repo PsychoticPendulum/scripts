@@ -40,6 +40,7 @@ CFGS = [
     "polybar",
     "ranger",
     "rofi",
+    "rclone",
     "xfce4",
 ]
 

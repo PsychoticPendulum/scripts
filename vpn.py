@@ -24,7 +24,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 0x1: cc = sys.argv[1].lower()
     else: cc = ''
 
-    path = '/etc/openvpn/ovpn_udp/'
+    path = '/etc/openvpn/ovpn_tcp/'
     hosts = os.popen(f'ls {path}').read().split('\n')
     hosts = GetHostByCountry(hosts,cc)
 

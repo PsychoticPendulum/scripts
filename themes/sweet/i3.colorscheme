@@ -1,0 +1,14 @@
+# Rice
+set $text-color			#ffffff
+set $bg-color-active		#810af5
+set $bg-color-inactive		#130023
+set $inactive-text-color	#ffffff
+set $urgent-bg-color		#3f0908
+set $indicator-color		#810af5
+
+# Set window colors
+#				border			background		text			indicator
+client.focused			$bg-color-active	$bg-color-active	$text-color		$indicator-color
+client.unfocused		$bg-color-inactive	$bg-color-inactive	$inactive-text-color	$indicator-color
+client.focused_inactive		$bg-color-inactive	$bg-color-inactive	$inactive-text-color	$indicator-color
+client.urgent			$urgent-bg-color	$urgent-bg-color	$text-color		$indicator-color

@@ -12,14 +12,8 @@ set_theme () {
 }
 
 if [[ -z "$1" ]]; then
-	echo "Usage: 	theme [option]."
-	echo "Available Themes:"
-	ls ~/Developer/.scripts/themes/
-	exit
+	find ~/Developer/.scripts/themes/* -not -name '.*' -type d -exec basename {} \;
 else
 	set_theme $1
+	killall polybar ; i3 restart ; clear
 fi
-
-killall polybar
-i3 restart
-clear

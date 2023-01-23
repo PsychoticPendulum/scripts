@@ -8,14 +8,9 @@
 # |           |___/                                   |___/                 |
 # |-------------------------------------------------------------------------| 
 
-if [[ -z $1 ]]; then
-	answer="Y"
-else
-	echo -n "Do you want to check for updates? [Y/n] "
-	read answer
-fi
+echo -n "Do you want to check for updates? [Y/n] "
+read answer
 
-if [[ "$answer" == "Y" ]]; then
+if [[ $answer == Y ]] || [[ -z $answer ]]; then
 	yay -Syu
-	sudo pacman -Syu
 fi

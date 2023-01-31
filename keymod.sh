@@ -14,3 +14,4 @@ echo "disabling CAPSLOCK ..."
 xmodmap -e 'clear lock'
 echo "Settings keyrate to 300, 50 ..."
 xset r rate 300 50
+notify-send "keymap set!"

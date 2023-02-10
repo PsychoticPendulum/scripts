@@ -8,9 +8,19 @@
 # |           |___/                                   |___/                 |
 # |-------------------------------------------------------------------------| 
 
+distro=$(lsb_release -d | awk '{print $2 $3}')
 echo -n "Do you want to check for updates? [Y/n] "
 read answer
 
 if [[ $answer == Y ]] || [[ -z $answer ]]; then
-	yay -Syu
+	if [[ $distro =~ "Void" ]]; then
+		printf "Detected Operating System: \x1B[1;35m$distro\x1B[0m\n"
+		sudo xbps-install -Syu
+	elif [[ $distro =~ "Arch" ]]; then
+		printf "Detected Operating System: \x1B[1;36m$distro\x1B[0m\n"
+		yay -Syu
+	else
+		printf "Detected Operating System: \x1B[1m$distro\x1B[0m\n"
+		sudo apt update && sudo apt upgrade
+	fi
 fi

@@ -1,50 +1,80 @@
-#! /bin/bash
-# |-------------------------------------------------------------------------|
-# |  ____                 _     _      ____                        _        |
-# | |  _ \ ___ _   _  ___| |__ (_) ___|  _ \ ___ _ __   __ _ _   _(_)_ __   |
-# | | |_) / __| | | |/ __| '_ \| |/ __| |_) / _ \ '_ \ / _` | | | | | '_ \  |
-# | |  __/\__ \ |_| | (__| | | | | (__|  __/  __/ | | | (_| | |_| | | | | | |
-# | |_|   |___/\__, |\___|_| |_|_|\___|_|   \___|_| |_|\__, |\__,_|_|_| |_| |
-# |           |___/                                   |___/                 |
-# |-------------------------------------------------------------------------| 
+#! /usr/bin/bash
 
-wrapper () {
-	printf "\x1B[32;7m$1\x1B[0m\n"
+Info () {
+    printf "\x1B[1;7m[INFO]\x1B[0m\t$1\n"
 }
 
-clear
+Success () {
+    printf "\x1B[1;32;7m [OK] \x1B[0m\t$1\n"
+}
 
-wrapper "Setting theme ..."
+Fail () {
+    printf "\x1B[1;31;7m[FAIL]\x1B[0m\t$1\n"
+	if [[ -z $2 ]]; then
+		exit 1
+	fi
+}
+
+Warning () {
+    printf "\x1B[1;31m$1\x1B[0m\n"
+}
+
+Message () {
+    printf "\x1B[1;35;7m$1\x1B[0m\n"
+}
+
+
+Status () {
+	if [[ $? -eq 0 ]]; then
+		Success "$1"
+	else
+		Fail "$2" "CONTINUE"
+	fi
+}
+
+Info "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)
 sh ~/Developer/.scripts/theme.sh $LAST
 feh --bg-scale ~/Wallpapers/wallpaper.jpg
-
-wrapper "Cleaning up ..."
-rm -Rfv ~/Downloads ~/Desktop
 ~/.screenlayout/focus.sh
+Status "Theme set!"
 
-wrapper "Setting keymap ..."
+Info "Cleaning up ..."
+rm -Rfv ~/Downloads ~/Desktop
+sudo ~/Developer/.scripts/clean.py
+
+
+Info "Setting keymap ..."
 sudo sh ~/Developer/.scripts/keymod.sh
+sudo sh ~/Developer/.scripts/keymap.sh
+setxkbmap us
+Status "Keymap set!"
 
-wrapper "Mounting shared partitions"
+Info "Mounting shared partitions ..."
 hostname=$(cat /etc/hostname)
 if [[ $hostname == "tux" ]]; then
 	sudo veracrypt /dev/nvme0n1p5 --keyfiles="/home/$USER/.keys/tux_nvme0n1p4" ~/Files/School/
 elif [[ $hostname -eq "psychosis" ]]; then
 	sudo veracrypt /dev/sda --keyfiles="/home/$USER/.keys/sda" ~/Files/Downloads/
 fi
+Status "Partitions mounted!"
 
-wrapper "Creating tmux session"
+Info "Creating tmux session ..."
 tmux new-session -d -s music
+Status "Created tmux session!"
 
-wrapper "Starting Update Script ..."
+Info "Starting Update Script ..."
 sudo sh ~/Developer/.scripts/update.sh kek
+Status "Updates installed!"
 
-wrapper "Updating repositories ..."
+Info "Updating repositories ..."
 repull.sh
+Status "Repositories are up to date!"
 
-wrapper "Connecting to VPN ..."
+Info "Connecting to VPN ..."
 python3 ~/Developer/.scripts/vpn.py
+Status
 
 clear
 bash
+

@@ -8,7 +8,7 @@
 # |           |___/                                   |___/                 |
 # |-------------------------------------------------------------------------| 
 
-distro=$(lsb_release -d | awk '{print $2 $3}')
+distro=$(cat /etc/issue | awk '{print $1}')
 echo -n "Do you want to check for updates? [Y/n] "
 read answer
 

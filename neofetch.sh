@@ -1,6 +1,6 @@
 #! /usr/bin/bash
 
-distro=$(lsb_release -d | awk '{print $2}')
+distro=$(cat /etc/issue | awk '{print $1}')
 
 if [[ $distro =~ "Void" ]]; then
 	neofetch

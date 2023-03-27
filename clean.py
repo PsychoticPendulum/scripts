@@ -2,7 +2,7 @@
 
 import os
 
-user = os.popen('whoami').read().rstrip('\n')
+user = "luks" 
 
 def DiskUsage():
     return os.popen('df / | awk \'{print $3}\' | tail -n 1').read().rstrip('\n')

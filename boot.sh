@@ -68,7 +68,7 @@ sudo sh ~/Developer/.scripts/update.sh kek
 Status "Updates installed!"
 
 Info "Updating repositories ..."
-repull.sh
+~/Developer/.scripts/repull.sh
 Status "Repositories are up to date!"
 
 Info "Connecting to VPN ..."

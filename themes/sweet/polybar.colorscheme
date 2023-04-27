@@ -1,8 +1,8 @@
 ; vim:set ft=dosini:
 
 [colors]
-background	= #00181b28
+background	= #ff181b28
 foreground	= #ffffffff
-primary		= #ff810af5                                   
+primary		= #ff8a0af5                              
 secondary	= #ff4f006f                                 
 alert		= #ffff0000

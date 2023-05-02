@@ -1,0 +1,32 @@
+
+/give @p diamond_sword{Enchantments:[{id:"minecraft:knockback",lvl:3}],CustomName:"\"GPT\""} 1
+
+# Sword
+/give @p minecraft:netherite_sword{Enchantments:[{id:"minecraft:sharpness",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:sweeping",lvl:3},{id:"minecraft:mending",lvl:1},{id:"minecraft:fire_aspect",lvl:2},{id:"minecraft:knockback",lvl:2},{id:"minecraft:looting",lvl:3}]} 1
+
+# Pickaxe
+/give @p minecraft:netherite_pickaxe{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fortune",lvl:3},{id:"minecraft:mending",lvl:1}]} 1
+
+# Axe
+/give @p minecraft:netherite_axe{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fortune",lvl:3},{id:"minecraft:mending",lvl:1},{id:"minecraft:fire_aspect",lvl:5}]} 1
+
+# Shovel
+/give @p minecraft:netherite_axe{Enchantments:[{id:"minecraft:efficiency",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:fortune",lvl:3},{id:"minecraft:mending",lvl:1}]} 1
+
+# Helmet 
+/give @p minecraft:netherite_helmet{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:respiration",lvl:3},{id:"minecraft:aqua_affinity",lvl:1},{id:"minecraft:mending",lvl:1},{id:"minecraft:thorns",lvl:3}]} 1
+
+# Chestplate 
+/give @p minecraft:netherite_chestplate{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:feather_falling",lvl:4},{id:"minecraft:depth_strider",lvl:3},{id:"minecraft:mending",lvl:1},{id:"minecraft:thorns",lvl:3}]} 1
+
+# Elytra 
+/give @p minecraft:elytra{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:feather_falling",lvl:4},{id:"minecraft:depth_strider",lvl:3},{id:"minecraft:mending",lvl:1},{id:"minecraft:thorns",lvl:3}]} 1
+
+# Pants
+/give @p minecraft:netherite_leggings{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:mending",lvl:1},{id:"minecraft:thorns",lvl:3}]} 1
+
+# Boots 
+/give @p minecraft:netherite_boots{Enchantments:[{id:"minecraft:protection",lvl:4},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:feather_falling",lvl:4},{id:"minecraft:depth_strider",lvl:3},{id:"minecraft:mending",lvl:1},{id:"minecraft:thorns",lvl:3},{id:"minecraft:soul_walker",lvl:3}]} 1
+
+# Bow
+/give @p minecraft:bow{Enchantments:[{id:"minecraft:power",lvl:5},{id:"minecraft:unbreaking",lvl:3},{id:"minecraft:punch",lvl:4},{id:"minecraft:flame",lvl:1},{id:"minecraft:mending",lvl:1},{id:"minecraft:infinity",lvl:1},{id:"minecraft:quick_charge",lvl:3}]} 1

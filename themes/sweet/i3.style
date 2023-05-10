@@ -1,7 +1,0 @@
-#! /bin/bash
-
-font pango:Noto 8
-gaps inner 0
-gaps outer 0
-# border_radius 11
-# for_window [class=".*"] border pixel 3

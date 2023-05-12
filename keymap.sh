@@ -11,7 +11,5 @@ else
 	echo 'Setting to de'
 	setxkbmap de
 fi
-xmodmap /etc/xmodmap.conf
 
-echo "Settings keyrate to 300, 50 ..."
 xset r rate 300 50

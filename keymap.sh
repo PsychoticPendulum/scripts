@@ -12,4 +12,4 @@ else
 	setxkbmap de
 fi
 
-xset r rate 300 50
+~/Developer/.scripts/keymod.sh

@@ -12,8 +12,7 @@ set_theme () {
 }
 
 if [[ -z "$1" ]]; then
-	find ~/Developer/.scripts/themes/* -not -name '.*' -type d -exec basename {} \;
-else
-	set_theme $1
+	theme=$(find ~/Developer/.scripts/themes/* -not -name '.*' -type d -exec basename {} \; | fzf)
+	[[ -n $theme ]] && set_theme $theme
 	killall polybar ; i3 restart ; clear
 fi

@@ -54,7 +54,7 @@ Info "Mounting shared partitions ..."
 hostname=$(cat /etc/hostname)
 if [[ $hostname == "tux" ]]; then
 	sudo veracrypt /dev/nvme0n1p5 --keyfiles="/home/$USER/.keys/tux_nvme0n1p4" ~/Files/School/
-elif [[ $hostname -eq "psychosis" ]]; then
+elif [[ $hostname == "psychosis" ]]; then
 	sudo veracrypt /dev/sda --keyfiles="/home/$USER/.keys/sda" ~/Files/Downloads/
 fi
 Status "Partitions mounted!"

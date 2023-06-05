@@ -37,7 +37,7 @@ def SplitArray(arr,threads):
 
 def Download(links):
     for link in links:
-        os.system(f"youtube-dl '{link}'")
+        os.system(f"yt-dlp '{link}'")
 
 if __name__ == "__main__":
     if len(sys.argv) == 1 or (sys.argv[1] == "-h" or sys.argv[1] == "--help"):

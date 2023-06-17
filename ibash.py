@@ -3,7 +3,7 @@
 import os
 import requests
 from random import randint
-from PyTerm import *
+from unilog import *
 
 class JOKE:
     pos     = ''

@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 
 import os
-from Log import *
+from unilog import *
 
 def GetUser():
     return os.popen("echo $USER").read().rstrip("\n")
@@ -46,9 +46,9 @@ CFGS = [
 
 def Backup(DEST):
     print("")
-    Log(LVL.INFO, f"{UTIL.REVERSE}Sending backup to: {UTIL.UNDERLINE}{DEST}")
+    Log(LVL.INFO, f"Sending backup to: {UTIL.UNDERLINE}{DEST}")
     if not os.path.exists(DEST):
-        Log(LVL.ERROR, f"Path does not exist:\t{UTIL.UNDERLINE}{DEST}")
+        Log(LVL.WARN, f"Path does not exist:\t{UTIL.UNDERLINE}{DEST}")
         return
 
     # Capturing date

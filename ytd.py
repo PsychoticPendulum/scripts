@@ -4,7 +4,7 @@ import os
 import sys
 import threading
 
-from PyTerm import *
+from unilog import *
 
 def Usage(status):
     print("Usage: download.py <path to file>")

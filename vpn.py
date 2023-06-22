@@ -2,7 +2,7 @@
 
 import os
 import sys
-from Log import *
+from unilog import *
 from random import randint
 
 def GetRandHost(hosts):

@@ -14,7 +14,7 @@ import os
 lines = []
 total_lines = 0
 
-file = open('/home/psychicpenguin/Developer/.scripts/assets/loaf.txt', 'r+')
+file = open('/home/luks/Developer/.scripts/assets/loaf.txt', 'r+')
 for line in file.readlines():
 	line = line.rstrip('\n')
 	lines.append(line)

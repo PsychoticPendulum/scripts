@@ -64,7 +64,7 @@ tmux new-session -d -s music
 Status "Created tmux session!"
 
 Info "Starting Update Script ..."
-sudo sh ~/Developer/.scripts/update.sh kek
+sudo python3 ~/Developer/.scripts/upm.py update kek
 Status "Updates installed!"
 
 Info "Updating repositories ..."

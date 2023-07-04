@@ -34,7 +34,7 @@ Status () {
 
 Info "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)
-sh ~/Developer/.scripts/theme.sh $LAST
+bash ~/Developer/.scripts/theme.sh $LAST
 feh --bg-scale ~/Wallpapers/wallpaper.jpg
 ~/.screenlayout/focus.sh
 Status "Theme set!"
@@ -45,8 +45,7 @@ sudo ~/Developer/.scripts/clean.py
 
 
 Info "Setting keymap ..."
-sudo sh ~/Developer/.scripts/keymod.sh
-sudo sh ~/Developer/.scripts/keymap.sh
+bash ~/Developer/.scripts/keymap.sh
 setxkbmap us
 Status "Keymap set!"
 
@@ -77,4 +76,3 @@ Status
 
 clear
 bash
-

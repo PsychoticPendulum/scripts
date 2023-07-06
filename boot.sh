@@ -35,8 +35,8 @@ Status () {
 Info "Setting theme ..."
 LAST=$(cat ~/Developer/.scripts/themes/.last.log)
 bash ~/Developer/.scripts/theme.sh $LAST
-feh --bg-scale ~/Wallpapers/wallpaper.jpg
 ~/.screenlayout/focus.sh
+feh --bg-scale ~/Wallpapers/wallpaper.jpg
 Status "Theme set!"
 
 Info "Cleaning up ..."
@@ -63,7 +63,7 @@ tmux new-session -d -s music
 Status "Created tmux session!"
 
 Info "Starting Update Script ..."
-sudo python3 ~/Developer/.scripts/upm.py update kek
+upm --recheck update
 Status "Updates installed!"
 
 Info "Updating repositories ..."

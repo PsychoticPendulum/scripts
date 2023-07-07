@@ -30,7 +30,7 @@ if [[ $action == "mount" ]]; then
 		exit
 	fi
 
-	name=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c 16)
+	name=$(cat /dev/urandom | tr -dc 'a-f0-9' | head -c 4)
 	mountpoint=$(ls /mnt | fzf)
 
 	sudo cryptsetup luksOpen /dev/$device luks-$name
@@ -50,7 +50,7 @@ if [[ $action == "mount" ]]; then
 
 elif [[ $action == "umount" ]]; then
 	mountpoint=$(lsblk -no MOUNTPOINT | grep "/" | fzf)
-	device=$(lsblk | grep $mountpoint | grep -o -E 'luks-[0-9a-f]{16}')
+	device=$(lsblk | grep $mountpoint | grep -o -E 'luks-[0-9a-f]{4}')
 
 	if [[ -z $device ]]; then
 		Fail "Device not found for: $mountpoint"

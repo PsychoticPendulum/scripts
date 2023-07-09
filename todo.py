@@ -103,13 +103,30 @@ def PrintLogo():
         print(f"{FG.CYAN}{line}{UTIL.RESET}")
 
 
+def Usage():
+    print(f"Usage: todo.py [file]")
+    print(f"")
+    print(f"{UTIL.BOLD}Description:{UTIL.RESET}")
+    print(f"    Simple tool to manage todo lists")
+    print(f"")
+    print(f"{UTIL.BOLD}Commands:{UTIL.RESET}")
+    print(f"    help                show this menu")
+    print(f"    exit                closed the program")
+    print(f"    add <task>          add a new task")
+    print(f"    remove [n]          remove task n")
+    print(f"    check [n]           change state of task n")
+    print("")
+
+
 def Prompt():
     cmd = input(">> ")
     match cmd.split(" ")[0]:
+        case "help":
+            print(f"{UTIL.CLEAR}{UTIL.TOP}",end="")
+            Usage()
+            input("Press any key to continue ...")
         case "exit":
             Exit()
-        case "list":
-            ListEntries()
         case "add":
             AddEntry(cmd)
         case "remove":
@@ -125,10 +142,14 @@ def Prompt():
 def main(argv):
     global list_file
     if len(argv):
+        if argv[0] == "--help":
+            Usage()
+            exit()
         list_file = argv[0]
     LoadTasks(list_file)
     print(f"{UTIL.CLEAR}{UTIL.TOP}",end="")
     ListEntries()
+
     while True:
         try:
             Prompt()

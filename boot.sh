@@ -5,7 +5,7 @@ Info () {
 }
 
 Success () {
-    printf "\x1B[1;32;7m [OK] \x1B[0m\t$1\n"
+    printf "\x1B[1;32;7m[ OK ]\x1B[0m\t$1\n"
 }
 
 Fail () {

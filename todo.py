@@ -137,6 +137,7 @@ def Prompt():
             Log(LVL.WARN, f"Unknown Command: {UTIL.UNDERLINE}{cmd}")
     print(f"{UTIL.CLEAR}{UTIL.TOP}",end="")
     ListEntries()
+    SaveTasks()
 
 
 def main(argv):

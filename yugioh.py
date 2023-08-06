@@ -5,12 +5,24 @@ import readline
 from unilog import *
 
 
+logo = [
+    f"{FG.CYAN}",
+    f"__   __      ____ _  ___  _     _ ",
+    f"\ \ / /   _ / ___(_)/ _ \| |__ | |",
+    f" \ V / | | | |  _| | | | | '_ \| |",
+    f"  | || |_| | |_| | | |_| | | | |_|",
+    f"  |_| \__,_|\____|_|\___/|_| |_(_)",
+    f"{UTIL.RESET}"
+]
+
+
 class PlayerLost(Exception):
     pass
 
 
 class Player:
-    def __init__(self, name, lifepoints):
+    def __init__(self, index, name, lifepoints):
+        self.index      = index
         self.name       = name
         self.lifepoints = lifepoints
     
@@ -21,9 +33,12 @@ class Player:
 
 
 def Display(players):
+    for part in logo:
+        print(part)
+
     for player in players:
         buffer = " " * (16 - len(player.name))
-        print(f"{FG.GREEN}{UTIL.BOLD}{player.name}:{buffer}{UTIL.RESET}{player.lifepoints}")
+        print(f"{UTIL.BOLD}[{player.index}]{FG.GREEN} {player.name}:{buffer}{UTIL.RESET}{player.lifepoints}")
 
 
 def Prompt(players):
@@ -33,7 +48,7 @@ def Prompt(players):
     
     try:
         for player in players:
-            if not player.name.lower() == command[0]:
+            if not str(player.index) == command[0]:
                 continue
             player.Damage(int(command[1])) 
     except PlayerLost as e:
@@ -46,8 +61,8 @@ def Prompt(players):
 if __name__ == "__main__":
     players = []
 
-    for name in sys.argv[1:]:
-        players.append(Player(name, 8000))
+    for i in range(1,len(sys.argv)):
+        players.append(Player(i, sys.argv[i], 8000))
 
     while True:
         try:

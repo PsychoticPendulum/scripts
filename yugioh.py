@@ -29,7 +29,7 @@ class Player:
     def Damage(self, points):
         self.lifepoints += points
         if self.lifepoints <= 0:
-            raise PlayerLost(f"{self.name} lost")
+            raise PlayerLost(f"{FG.RED}{UTIL.REVERSE}{self.name} lost with {UTIL.BOLD}{self.lifepoints}{UTIL.RESET}")
 
 
 def Display(players):

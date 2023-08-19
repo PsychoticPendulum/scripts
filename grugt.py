@@ -13,10 +13,12 @@ def IsGitRepo(directory):
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         exit(1)
-    root = sys.argv[1]
+    root = sys.argv[1:]
 
-    directories = GetDirectories(root)
-    for directory in directories:
-        if IsGitRepo(directory):
-            Log(LVL.INFO, f"{directory}")
-            os.system(f"cd {directory}; git remote update; git pull; cd")
+    
+    for subfolder in root:
+        directories = GetDirectories(subfolder)
+        for directory in directories:
+            if IsGitRepo(directory):
+                Log(LVL.INFO, f"{directory}")
+                os.system(f"cd {directory}; git remote update; git pull; cd")

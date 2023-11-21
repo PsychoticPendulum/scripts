@@ -1,6 +1,6 @@
 #! /bin/bash
 
-CURRENT=$(setxkbmap -query | tail -n 1 | awk '{print $2}')
+CURRENT=$(setxkbmap -query | tail -n 2 | head -n 1 | awk '{print $2}')
 
 echo Current is $CURRENT
 

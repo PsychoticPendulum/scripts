@@ -34,7 +34,7 @@ if ! df | grep -q '/mnt/share/OneDrive'; then
 fi
 
 Info "Copying diary to OneDrive ..."
-cp ~/.log/logbook/Diary.odt /mnt/share/OneDrive/
+cp ~/Files/log/Diary.odt /mnt/share/OneDrive/
 Status "Done"
 
 if ! df | grep -q '/mnt/NAS'; then
@@ -44,5 +44,5 @@ if ! df | grep -q '/mnt/NAS'; then
 fi
 
 Info "Copying diary to NAS ..."
-cp ~/.log/logbook/Diary.odt /mnt/NAS/backups/FullBackup/.log/logbook/
+cp ~/Files/log/Diary.odt /mnt/NAS/backups/FullBackup/.log/logbook/
 Status "Done"

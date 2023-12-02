@@ -24,7 +24,7 @@ Status () {
 }
 
 Info "Opening Diary ..."
-libreoffice ~/.log/logbook/Diary.odt
+libreoffice ~/Files/log/Diary.odt
 Status "Saved Diary"
 
 if ! df | grep -q '/mnt/share/OneDrive'; then 

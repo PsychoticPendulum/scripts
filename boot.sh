@@ -33,19 +33,19 @@ Status () {
 }
 
 Info "Setting theme ..."
-LAST=$(cat ~/Developer/.scripts/themes/.last.log)
-bash ~/Developer/.scripts/theme.sh $LAST
+LAST=$(cat ~/bin/themes/.last.log)
+bash ~/bin/theme.sh $LAST
 ~/.screenlayout/focus.sh
-feh --bg-scale ~/Wallpapers/wallpaper.jpg
+feh --bg-scale ~/file/wallpapers/wallpaper.jpg
 Status "Theme set!"
 
 Info "Cleaning up ..."
 rm -Rfv ~/Downloads ~/Desktop
-sudo ~/Developer/.scripts/clean.py
+sudo ~/bin/clean.py
 
 
 Info "Setting keymap ..."
-bash ~/Developer/.scripts/keymap.sh
+bash ~/bin/keymap.sh
 setxkbmap us
 Status "Keymap set!"
 
@@ -67,11 +67,11 @@ upm --recheck update
 Status "Updates installed!"
 
 Info "Updating repositories ..."
-~/Developer/.scripts/repull.sh
+~/bin/repull.sh
 Status "Repositories are up to date!"
 
 Info "Connecting to VPN ..."
-python3 ~/Developer/.scripts/vpn.py
+python3 ~/bin/vpn.py
 Status
 
 clear

@@ -18,15 +18,11 @@ FILES = [
 ]
 
 DIRS = [
-    "Developer",
-    "Wallpapers",
-    "Files",
+    "dev",
+    "file",
+    "bin",
     ".vim",
-    ".stasi",
     ".screenlayout",
-    ".log",
-    ".info",
-    ".newsboat",
     ".keys",
     ".minecraft"
 ]

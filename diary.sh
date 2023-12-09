@@ -24,7 +24,7 @@ Status () {
 }
 
 Info "Opening Diary ..."
-libreoffice ~/Files/log/Diary.odt
+libreoffice ~/file/log/Diary.odt
 Status "Saved Diary"
 
 if ! df | grep -q '/mnt/share/OneDrive'; then 
@@ -34,7 +34,7 @@ if ! df | grep -q '/mnt/share/OneDrive'; then
 fi
 
 Info "Copying diary to OneDrive ..."
-cp ~/Files/log/Diary.odt /mnt/share/OneDrive/
+cp ~/file/log/Diary.odt /mnt/share/OneDrive/
 Status "Done"
 
 if ! df | grep -q '/mnt/NAS'; then
@@ -44,5 +44,5 @@ if ! df | grep -q '/mnt/NAS'; then
 fi
 
 Info "Copying diary to NAS ..."
-cp ~/Files/log/Diary.odt /mnt/NAS/backups/FullBackup/.log/logbook/
+cp ~/file/log/Diary.odt /mnt/NAS/backups/FullBackup/.log/logbook/
 Status "Done"

@@ -12,4 +12,4 @@ else
 	setxkbmap de
 fi
 
-~/Developer/.scripts/keymod.sh
+~/bin/keymod.sh

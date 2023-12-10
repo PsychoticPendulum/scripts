@@ -36,7 +36,7 @@ Info "Setting theme ..."
 LAST=$(cat ~/bin/themes/.last.log)
 bash ~/bin/theme.sh $LAST
 ~/.screenlayout/focus.sh
-feh --bg-scale ~/file/wallpapers/wallpaper.jpg
+feh --bg-scale ~/file/pic/wallpapers/wallpaper.jpg
 Status "Theme set!"
 
 Info "Cleaning up ..."

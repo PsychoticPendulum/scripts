@@ -9,4 +9,4 @@ repull () {
 }
 
 repull ~/.config/
-repull ~/Developer/.scripts/
+repull ~/bin/

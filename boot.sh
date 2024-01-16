@@ -40,7 +40,7 @@ feh --bg-scale ~/file/pic/wallpapers/wallpaper.jpg
 Status "Theme set!"
 
 Info "Cleaning up ..."
-rm -Rfv ~/Downloads ~/Desktop
+rmdir *
 sudo ~/bin/clean.py
 
 
@@ -69,10 +69,6 @@ Status "Updates installed!"
 Info "Updating repositories ..."
 ~/bin/repull.sh
 Status "Repositories are up to date!"
-
-Info "Connecting to VPN ..."
-python3 ~/bin/vpn.py
-Status
 
 clear
 bash

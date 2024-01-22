@@ -44,5 +44,5 @@ if ! df | grep -q '/mnt/NAS'; then
 fi
 
 Info "Copying diary to NAS ..."
-cp ~/file/log/Diary.odt /mnt/NAS/backups/FullBackup/.log/logbook/
+cp ~/file/log/Diary.odt /mnt/NAS/
 Status "Done"

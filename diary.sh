@@ -27,14 +27,14 @@ Info "Opening Diary ..."
 libreoffice ~/file/log/Diary.odt
 Status "Saved Diary"
 
-if ! df | grep -q '/mnt/share/OneDrive'; then 
+if ! df | grep -q '/mnt/share/od'; then 
 	Info "Mounting OneDrive ..."
-	rclone mount --daemon od: /mnt/share/OneDrive
+	rclone mount --daemon od: /mnt/share/od
 	Status "Done"
 fi
 
 Info "Copying diary to OneDrive ..."
-cp ~/file/log/Diary.odt /mnt/share/OneDrive/
+cp ~/file/log/Diary.odt /mnt/share/od/
 Status "Done"
 
 if ! df | grep -q '/mnt/NAS'; then

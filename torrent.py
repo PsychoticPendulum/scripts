@@ -2,7 +2,7 @@
 
 import os
 import sys
-from PyTerm import *
+from unilog import *
 
 def ParseFile(fileptr):
     try:
@@ -13,10 +13,10 @@ def ParseFile(fileptr):
         file.close()
         return results
     except PermissionError:
-        Log(LVL.ERROR, f"Insufficient permissions to read {fileptr}")
+        Log(LVL.FAIL, f"Insufficient permissions to read {fileptr}")
         exit(1)
     except FileNotFoundError:
-        Log(LVL.ERROR, f"File does not exist: {fileptr}")
+        Log(LVL.FAIL, f"File does not exist: {fileptr}")
         exit(1)
 
 def GetLink(name):
@@ -25,15 +25,15 @@ def GetLink(name):
     name = name.replace(" ","+")
     
     try:    
-        html = os.popen(f"curl -s 'https://1337x.to/search/{name}/1/' | grep '\[QxR\]'").read()
+        html = os.popen(f"curl -s 'https://1337x.to/search/{name}/1/' | grep 'FitGirl'").read()
         html = (html.split("href=\"")[2]).split("\">")[0]
         html = f"https://1337x.to{html}"
 
         Log(LVL.INFO, f"Link Found!\n{UTIL.REVERSE}{html}")
         return html
     except:
-        Log(LVL.ERROR, f"Unable to find {UTIL.REVERSE}{name}")
-        return "ERROR"
+        Log(LVL.WARN, f"Unable to find {UTIL.REVERSE}{name}")
+        return "FAIL"
 
 def ExtractTorrent(link):
     torrent = os.popen(f"curl -s '{link}' | grep 'itorrents.org'").read()
@@ -48,7 +48,7 @@ def GetTorrent(name):
     Log(LVL.INFO, f"Searching for {name}")
     link = GetLink(name)
     
-    if link == "ERROR":
+    if link == "FAIL":
         os.system(f"echo '{name}' >> failed.txt")
         return  
 
@@ -61,7 +61,7 @@ def GetTorrent(name):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        Log(LVL.ERROR, "Not enough arguments")
+        Log(LVL.FAIL, "Not enough arguments")
         exit(1)
     
     Log(LVL.INFO, "Reading file ...")

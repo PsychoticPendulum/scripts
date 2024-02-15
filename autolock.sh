@@ -1,3 +1,3 @@
 #! /usr/bin/bash
 
-exec xautolock -time 1 -locker "i3lock -c 000000"
+exec xautolock -time 1 -locker "i3lock -i ~/file/pic/lock.png"

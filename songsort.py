@@ -17,7 +17,6 @@ def ParseFile(fileptr):
             print(line.rstrip('\n'),end=" ; ")
 
 if __name__ == "__main__":
-    try:
-        content = ParseFile(sys.argv[1])
-    except:
-        Log(LVL.FAIL, "Unable to parse file")
+    os.system("$EDITOR songs.tmp")
+    ParseFile("songs.tmp")
+    os.system("rm songs.tmp")

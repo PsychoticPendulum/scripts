@@ -32,6 +32,8 @@ Status () {
 	fi
 }
 
+cd ~/
+
 Info "Setting theme ..."
 LAST=$(cat ~/bin/themes/.last.log)
 bash ~/bin/theme.sh $LAST

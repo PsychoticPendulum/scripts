@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#!/bin/bash
 
 Info () {
     printf "\x1B[1;7m[Info]\x1B[0m\t$1\n"
@@ -23,26 +23,27 @@ Status () {
 	fi
 }
 
-Info "Opening Diary ..."
-libreoffice ~/file/log/Diary.odt
-Status "Saved Diary"
+local_file="$HOME/file/log/Diary.odt"
+remote_file="/mnt/share/od/backup/file/log/Diary.odt"
 
-if ! df | grep -q '/mnt/share/od'; then 
+if ! df | grep -q '/mnt/share/od'; then
 	Info "Mounting OneDrive ..."
 	rclone mount --daemon od: /mnt/share/od
 	Status "Done"
 fi
 
-Info "Copying diary to OneDrive ..."
-cp ~/file/log/Diary.odt /mnt/share/od/
-Status "Done"
-
-if ! df | grep -q '/mnt/NAS'; then
-	Info "Mounting NAS ..."
-	sudo mount -t nfs 192.168.4.254:/nastier /mnt/NAS
-	Status "Done"
+if [ $(stat -c %Y "$remote_file") -gt $(stat -c %Y "$local_file") ]; then
+	Info "$remote_file is newer than $local_file"
+	cp "$local_file" "$local_file.$(date +'%s').bak"
+	Status "Creating backup of $local_file"
+	cp "$remote_file" "$local_file"
+	Status "Downloading $remote_file"
 fi
 
-Info "Copying diary to NAS ..."
-cp ~/file/log/Diary.odt /mnt/NAS/
+Info "Opening diary ..."
+libreoffice "$local_file"
+Status "Diary saved"
+
+Info "Copying diary to remote ..."
+cp "$local_file" "$remote_file"
 Status "Done"

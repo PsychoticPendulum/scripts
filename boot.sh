@@ -51,13 +51,6 @@ bash ~/bin/keymap.sh
 setxkbmap us
 Status "Keymap set!"
 
-Info "Mounting shared partitions ..."
-host=$(cat /etc/hostname)
-if [[ $host == "tux" ]]; then
-	sudo veracrypt /dev/nvme0n1p5 --keyfiles="/home/$USER/.keys/tux_nvme0n1p4" ~/file/school/
-fi
-Status "Partitions mounted!"
-
 Info "Creating tmux session ..."
 tmux new-session -d -s music
 Status "Created tmux session!"

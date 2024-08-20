@@ -15,7 +15,7 @@ selected_ip=$(jq -r --arg hostname "$selected_hostname" '.[$hostname]' "$json_fi
 
 # Connect to the selected hostname
 if [ -n "$selected_ip" ]; then
-    ssh "user@$selected_ip"
+    ssh "$USER@$selected_ip"
 else
     echo "No IP found for the selected hostname."
 fi

@@ -23,27 +23,27 @@ Status () {
 	fi
 }
 
-local_file="$HOME/file/log/Diary.odt"
-remote_file="/mnt/share/od/backup/file/log/Diary.odt"
-
 if ! df | grep -q '/mnt/share/od'; then
 	Info "Mounting OneDrive ..."
 	rclone mount --daemon od: /mnt/share/od
 	Status "Done"
 fi
 
-if [ $(stat -c %Y "$remote_file") -gt $(stat -c %Y "$local_file") ]; then
-	Info "$remote_file is newer than $local_file"
-	cp "$local_file" "$local_file.$(date +'%s').bak"
-	Status "Creating backup of $local_file"
-	cp "$remote_file" "$local_file"
-	Status "Downloading $remote_file"
-fi
+local_file="$HOME/tmp.md"
+remote_file="/mnt/share/od/log/diary.md.gpg"
 
-Info "Opening diary ..."
-libreoffice "$local_file"
-Status "Diary saved"
-
-Info "Copying diary to remote ..."
-cp "$local_file" "$remote_file"
-Status "Done"
+Info "Creating backup of remote file ..."
+cp "$remote_file" "$remote_file.$(date +%s)"
+Info "Decrypting remote file ..."
+gpg --decrypt "$remote_file" > "$local_file"
+local_file_size=$(stat --format=%s "$local_file")
+Info "Opening local copy ..."
+vim "$local_file" -c 'set wrap'
+Info "Encrypting local file ..."
+gpg --symmetric "$local_file"
+Info "Moving local file back to remote ..."
+cp -v "$local_file.gpg" "$remote_file"
+Info "Destroying local file ..."
+dd if=/dev/urandom of="$local_file" count=$local_file_size
+Info "Removing temp files ..."
+rm -v "$local_file" "$local_file.gpg"

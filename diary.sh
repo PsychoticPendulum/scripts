@@ -38,7 +38,7 @@ Info "Decrypting remote file ..."
 gpg --decrypt "$remote_file" > "$local_file"
 local_file_size=$(stat --format=%s "$local_file")
 Info "Opening local copy ..."
-vim "$local_file" -c 'set wrap'
+vim "$local_file" -c 'set wrap nocursorcolumn colorcolumn=80'
 Info "Encrypting local file ..."
 gpg --symmetric "$local_file"
 Info "Moving local file back to remote ..."

@@ -29,21 +29,36 @@ if ! df | grep -q '/mnt/share/od'; then
 	Status "Done"
 fi
 
-local_file="$HOME/tmp.md"
+ramfs="$HOME/ramfs"
+
+Info "Creating temporary filesystem ..."
+mkdir ~/ramfs
+sudo mount -t ramfs -o size=1G ramfs $ramfs
+sudo chown -Rv $USER:$USER $ramfs
+
+Info "Creating temporary password file ..."
+echo -n "Decryption Cypher: "
+read -s password
+echo "OK"
+echo $password > $ramfs/password
+
+local_file="$HOME/ramfs/tmp.md"
 remote_file="/mnt/share/od/log/diary.md.gpg"
+password_file="$HOME/ramfs/password"
 
 Info "Creating backup of remote file ..."
-cp "$remote_file" "$remote_file.$(date +%s)"
+cp "$remote_file" "$remote_file.$(date +%Y-%m-%d)"
 Info "Decrypting remote file ..."
-gpg --decrypt "$remote_file" > "$local_file"
+gpg --decrypt --batch --passphrase-file $ramfs/password --output "$local_file" "$remote_file"
 local_file_size=$(stat --format=%s "$local_file")
 Info "Opening local copy ..."
 vim "$local_file" -c 'set wrap nocursorcolumn colorcolumn=80'
 Info "Encrypting local file ..."
-gpg --symmetric "$local_file"
+gpg --symmetric --batch --passphrase-file $ramfs/password "$local_file"
 Info "Moving local file back to remote ..."
 cp -v "$local_file.gpg" "$remote_file"
-Info "Destroying local file ..."
-dd if=/dev/urandom of="$local_file" count=$local_file_size
-Info "Removing temp files ..."
-rm -v "$local_file" "$local_file.gpg"
+Info "Removing temporary filesystem ..."
+sudo umount ~/ramfs
+rmdir ~/ramfs
+
+tree -L 1 /mnt/share/od/log

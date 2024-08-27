@@ -59,10 +59,10 @@ choose_session() {
     else
         # User cancelled or closed the dialog; exit or handle accordingly
         echo "No session selected. Exiting..."
+		clear
         exit
     fi
 }
 
 # Run the function to choose a session
 choose_session
-

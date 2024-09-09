@@ -1,3 +1,3 @@
 #! /bin/bash
 
-notify-send $(curl ipconfig.io)
+curl -Ss ipconfig.io | jq
